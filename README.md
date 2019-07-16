@@ -1,29 +1,57 @@
-# my-project
+# 项目：高思教育（webapp + 后台管理系统)
 
-## Project setup
+## 已上线
 ```
-npm install
-```
+项目无官网，app下载地址在手机应用中搜索“高思教育”即可
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+webApp上线地址：http://47.103.6.17:1905
 
-### Compiles and minifies for production
-```
-npm run build
+后台管理系统上线地址：http://47.103.6.17:1906
+
+github仓库地址：git@github.com:gzh51904/gaosijiaoyu.git
 ```
 
-### Run your tests
+### 团队分工
 ```
-npm run test
+组长：程健
+
+组员：杨蕾、黄常平、韦家振
+
+负责模块说明：
+程 健：统筹项目，搭建项目构架，环境配置，模块安装，底层路由编写，前后端接口api编写, 性能优化，实现页面数据流逻辑，各模块功能测试、数据处理，修复BUG
+杨 蕾：负责后台管理系统的实现，登录注册，后台UI，用户管理，后台的增删改查功能实现，webApp“我的”模块，购物车UI实现，搜索功能实现、配合修复BUG
+黄常平：负责webApp注册、登录、服务页面、选择班级课程页面等模块的实现，测试负责模块的性能，配合项目其他所需工作
+未家振：负责信息推广页（京味页、养娃页、品牌页）、转班页、消息页、系统设置页等UI的实现，测试所负责模块的性能，配合项目其他所需工作
+
+bug：1.购物车页面本地测试为自适应宽度，上线后不能自性应宽度
+     2.点击下拉菜单选择功能未实现
 ```
 
-### Lints and fixes files
+### 项目目录
 ```
-npm run lint
+├─houtai                   //后台根目录
+│  └─src
+│      ├─assets           静态资源文件夹   
+│      ├─pages            组件文件夹
+│      ├─routers          路由文件
+│      └─vuex             vuex文件
+├─public
+├─qq
+├─shujuku                 //数据库根目录
+│  └─src
+│      ├─api              数据库接口文件
+│      ├─css
+│      ├─db               数据库配置文件
+│      └─utils
+└─src                    //webApp目录
+    ├─assets             静态资源文件
+    │  ├─iconfont        字体图标文件
+    │  ├─img             图片资源文件
+    │  └─xuankeimg       图片资源文件
+    ├─pages              组件文件
+    ├─routers            路由文件
+    ├─vuex               vuex文件
+    └─xinxizujian        组件文件
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
