@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <router-view />
-    <div class="footer">
-      <ul :default-active="active" mode="horizontal" @select="handleSelect" router>
-        <li v-for="item in pages" :key="item.name" :index="item.path" @click="goto(item.name)">
+    <div class="footer" v-show="isshow">
+      <ul mode="horizontal" router>
+        <li v-for="item in pages" :key="item.name" 
+        :index="item.path" 
+         :class="{active: $route.name == item.name}" 
+          @click="goto(item.name)">
           <i :class="item.imgUrl"></i>
           <span>{{item.title}}</span>
         </li>
@@ -13,7 +16,7 @@
 </template>
 
 <script>
-import Vue from "vue/dist/vue.js";
+import Vue from "vue";
 import { rem } from "./assets/rem";
 export default {
   name: "app",
@@ -45,34 +48,53 @@ export default {
           imgUrl: "iconfont icon-wode"
         }
       ],
-      active: "/Xuanke"
+      active: "Xuanke",
+      isshow: true
     };
   },
-  created() {
-    rem();
-    let hash = window.location.hash.slice(1);
-    this.active = hash;
-    console.log(hash);
-  },
+
   methods: {
-    handleSelect(index, indexPaht) {
-      this.active = index;
-    },
+    
     goto(name) {
+       this.active = name
       this.$router.push({
         name
       });
+    }
+  },
+  watch: {
+    $route(val) {
+      if (
+        val.fullPath == "/xuanke" ||
+        val.fullPath == "/fuwu" ||
+        val.fullPath == "/xiaoxi" ||
+        val.fullPath == "/mine"
+      ) {
+        this.isshow = true;
+      } else {
+        this.isshow = false;
+      }
     }
   },
   created() {
     // 刷新保持高亮效果
     let hash = window.location.hash.slice(1);
     this.active = hash;
+    // console.log(hash);
+    // console.log(this.$route.path);
+    // if (this.$route.path == "/xuanke" || "/fuwu" || "/xiaoxi" || "/mine") {
+    //   console.log(this.$route.fullpath);
+
+    //   this.isshow = true;
+    // }
   }
 };
 </script>
 
 <style scoped>
+.active{
+  color:#58bc58;
+}
 #app {
   height: 100%;
   display: flex;
@@ -105,5 +127,4 @@ ul li i {
 ul li span {
   font-size: 0.16rem;
 }
-/* sdhfjsghdfjkgsdkjfgksdjg */
 </style>
